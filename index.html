@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#111827">
+    <meta name="description" content="MoneyMate - Simple personal money manager">
+
+    <title>MoneyMate</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="app-logo">₦</div>
+
+            <div>
+                <h1>MoneyMate</h1>
+                <p>Your money, under control</p>
+            </div>
+        </div>
+
+        <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">
+            🌙
+        </button>
+    </header>
+
+
+    <!-- ================= MAIN APP ================= -->
+    <main class="app-container">
+
+        <!-- ================= HOME PAGE ================= -->
+        <section id="homePage" class="page active-page">
+
+            <div class="welcome">
+                <p class="small-label">YOUR FINANCES</p>
+                <h2>Dashboard</h2>
+            </div>
+
+
+            <!-- BALANCE CARD -->
+            <div class="balance-card">
+
+                <div class="balance-top">
+                    <div>
+                        <span>Total Balance</span>
+
+                        <h2 id="totalBalance">
+                            ₦0.00
+                        </h2>
+                    </div>
+
+                    <div class="balance-icon">
+                        💰
+                    </div>
+                </div>
+
+
+                <div class="balance-details">
+
+                    <div class="balance-detail">
+                        <span>Money In</span>
+                        <strong id="totalIncome">
+                            ₦0.00
+                        </strong>
+                    </div>
+
+                    <div class="balance-detail">
+                        <span>Money Out</span>
+                        <strong id="totalExpense">
+                            ₦0.00
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <div class="quick-actions">
+
+                <button
+                    class="quick-btn income-btn"
+                    id="quickIncome">
+                    <span>＋</span>
+                    <div>
+                        <strong>Add Income</strong>
+                        <small>Money received</small>
+                    </div>
+                </button>
+
+
+                <button
+                    class="quick-btn expense-btn"
+                    id="quickExpense">
+                    <span>−</span>
+                    <div>
+                        <strong>Add Expense</strong>
+                        <small>Money spent</small>
+                    </div>
+                </button>
+
+            </div>
+
+
+            <!-- MONTHLY OVERVIEW -->
+            <div class="section-card">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="small-label">THIS MONTH</span>
+                        <h3 id="currentMonth">
+                            Monthly Overview
+                        </h3>
+                    </div>
+
+                    <span class="section-icon">
+                        📅
+                    </span>
+                </div>
+
+
+                <div class="overview-grid">
+
+                    <div class="overview-item">
+                        <div class="overview-icon income">
+                            ↗
+                        </div>
+
+                        <div>
+                            <span>Money In</span>
+                            <strong id="monthIncome">
+                                ₦0.00
+                            </strong>
+                        </div>
+                    </div>
+
+
+                    <div class="overview-item">
+                        <div class="overview-icon expense">
+                            ↘
+                        </div>
+
+                        <div>
+                            <span>Money Out</span>
+                            <strong id="monthExpense">
+                                ₦0.00
+                            </strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+                        <span>Spending level</span>
+                        <strong id="spendingPercent">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div
+                            id="spendingProgress"
+                            class="progress-fill">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SPENDING BREAKDOWN -->
+            <div class="section-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="small-label">
+                            WHERE YOUR MONEY GOES
+                        </span>
+
+                        <h3>Spending Breakdown</h3>
+                    </div>
+
+                    <span class="section-icon">
+                        📊
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="spendingChart"
+                    class="spending-chart">
+
+                    <div class="empty-chart">
+                        <div>📊</div>
+                        <p>No expenses yet</p>
+                        <small>
+                            Add an expense to see your spending
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT TRANSACTIONS -->
+            <div class="section-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="small-label">
+                            ACTIVITY
+                        </span>
+
+                        <h3>Recent Transactions</h3>
+                    </div>
+
+                    <button
+                        id="viewAllHome"
+                        class="text-btn">
+                        View all
+                    </button>
+
+                </div>
+
+
+                <div id="homeTransactions">
+
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            💸
+                        </div>
+
+                        <h3>No transactions yet</h3>
+
+                        <p>
+                            Add your first income or expense
+                            to start tracking your money.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MONEY INSIGHTS -->
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    💡
+                </div>
+
+                <div>
+                    <span>Money Insight</span>
+
+                    <p id="moneyAdvice">
+                        Start adding transactions and
+                        MoneyMate will give you useful
+                        money insights.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TRANSACTIONS PAGE ================= -->
+        <section
+            id="transactionsPage"
+            class="page">
+
+            <div class="page-title">
+                <span class="small-label">
+                    MONEY ACTIVITY
+                </span>
+
+                <h2>Transactions</h2>
+
+                <p>
+                    See and manage all your income and expenses.
+                </p>
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="search-box">
+
+                <span>🔎</span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search transactions...">
+
+            </div>
+
+
+            <!-- FILTERS -->
+            <div class="filter-row">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="all">
+                    All
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="income">
+                    Income
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="expense">
+                    Expenses
+                </button>
+
+            </div>
+
+
+            <!-- TRANSACTION LIST -->
+            <div
+                id="transactionList"
+                class="transaction-list">
+
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        🧾
+                    </div>
+
+                    <h3>No transactions</h3>
+
+                    <p>
+                        Your transactions will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STATISTICS PAGE ================= -->
+        <section
+            id="statsPage"
+            class="page">
+
+            <div class="page-title">
+
+                <span class="small-label">
+                    YOUR NUMBERS
+                </span>
+
+                <h2>Statistics</h2>
+
+                <p>
+                    Understand your money habits.
+                </p>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        🧾
+                    </div>
+
+                    <span>Transactions</span>
+
+                    <strong id="statTransactions">
+                        0
+                    </strong>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        💰
+                    </div>
+
+                    <span>Income Records</span>
+
+                    <strong id="statIncome">
+                        0
+                    </strong>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon red">
+                        💸
+                    </div>
+
+                    <span>Expense Records</span>
+
+                    <strong id="statExpense">
+                        0
+                    </strong>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        🏷️
+                    </div>
+
+                    <span>Categories</span>
+
+                    <strong id="statCategories">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS CHART -->
+            <div class="section-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="small-label">
+                            OVERVIEW
+                        </span>
+
+                        <h3>Income vs Expenses</h3>
+                    </div>
+
+                    <span class="section-icon">
+                        📈
+                    </span>
+
+                </div>
+
+
+                <div class="income-expense-chart">
+
+                    <div class="chart-column">
+
+                        <div
+                            id="incomeChartBar"
+                            class="chart-bar income-chart-bar">
+                        </div>
+
+                        <span>Income</span>
+
+                    </div>
+
+
+                    <div class="chart-column">
+
+                        <div
+                            id="expenseChartBar"
+                            class="chart-bar expense-chart-bar">
+                        </div>
+
+                        <span>Expenses</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-values">
+
+                    <div>
+                        <span>Income</span>
+                        <strong id="chartIncomeValue">
+                            ₦0.00
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Expenses</span>
+                        <strong id="chartExpenseValue">
+                            ₦0.00
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CATEGORY BREAKDOWN -->
+            <div class="section-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="small-label">
+                            EXPENSE CATEGORIES
+                        </span>
+
+                        <h3>Category Breakdown</h3>
+                    </div>
+
+                </div>
+
+
+                <div id="categoryStats">
+
+                    <div class="empty-state small-empty">
+                        <div class="empty-icon">
+                            📊
+                        </div>
+
+                        <p>
+                            Add expenses to see category statistics.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SAVINGS PAGE ================= -->
+        <section
+            id="savingsPage"
+            class="page">
+
+            <div class="page-title">
+
+                <span class="small-label">
+                    FUTURE GOALS
+                </span>
+
+                <h2>My Savings</h2>
+
+                <p>
+                    Set a target and track your progress.
+                </p>
+
+            </div>
+
+
+            <!-- SAVINGS CARD -->
+            <div class="savings-card">
+
+                <div class="savings-top">
+
+                    <div class="savings-icon">
+                        🎯
+                    </div>
+
+                    <button
+                        id="setGoalBtn"
+                        class="small-action-btn">
+                        Set Goal
+                    </button>
+
+                </div>
+
+
+                <div class="savings-info">
+
+                    <span>Current Goal</span>
+
+                    <h2 id="goalName">
+                        No savings goal
+                    </h2>
+
+                    <div class="goal-amounts">
+
+                        <strong id="savedAmount">
+                            ₦0.00
+                        </strong>
+
+                        <span>
+                            of
+                            <b id="goalTarget">
+                                ₦0.00
+                            </b>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="goal-progress">
+
+                    <div
+                        id="goalProgress"
+                        class="goal-progress-fill">
+                    </div>
+
+                </div>
+
+
+                <div class="goal-footer">
+
+                    <span id="goalPercent">
+                        0% completed
+                    </span>
+
+                    <span id="goalRemaining">
+                        ₦0.00 remaining
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAVINGS TIPS -->
+            <div class="section-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="small-label">
+                            SAVING TIPS
+                        </span>
+
+                        <h3>Build Your Savings</h3>
+                    </div>
+
+                    <span class="section-icon">
+                        💡
+                    </span>
+
+                </div>
+
+
+                <div class="tip-list">
+
+                    <div class="tip-item">
+                        <span>1</span>
+
+                        <div>
+                            <strong>
+                                Track every expense
+                            </strong>
+
+                            <p>
+                                Knowing where your money goes
+                                makes saving easier.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="tip-item">
+                        <span>2</span>
+
+                        <div>
+                            <strong>
+                                Set a clear target
+                            </strong>
+
+                            <p>
+                                Give your savings a specific
+                                purpose.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="tip-item">
+                        <span>3</span>
+
+                        <div>
+                            <strong>
+                                Review your spending
+                            </strong>
+
+                            <p>
+                                Check your expenses regularly
+                                and adjust when needed.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ADD TRANSACTION PAGE ================= -->
+        <section
+            id="addPage"
+            class="page">
+
+            <div class="page-title">
+
+                <span class="small-label">
+                    MONEY TRACKER
+                </span>
+
+                <h2>Add Transaction</h2>
+
+                <p>
+                    Record money coming in or going out.
+                </p>
+
+            </div>
+
+
+            <form
+                id="transactionForm"
+                class="transaction-form">
+
+
+                <!-- TYPE -->
+                <div class="form-group">
+
+                    <label>
+                        Transaction Type
+                    </label>
+
+                    <div class="type-selector">
+
+                        <button
+                            type="button"
+                            class="type-btn active"
+                            data-type="income">
+
+                            <span>↗</span>
+
+                            <div>
+                                <strong>Income</strong>
+                                <small>Money received</small>
+                            </div>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="type-btn"
+                            data-type="expense">
+
+                            <span>↘</span>
+
+                            <div>
+                                <strong>Expense</strong>
+                                <small>Money spent</small>
+                            </div>
+
+                        </button>
+
+                    </div>
+
+                    <input
+                        type="hidden"
+                        id="transactionType"
+                        value="income">
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="e.g. Salary, food, transport..."
+                        required>
+
+                </div>
+
+
+                <!-- AMOUNT -->
+                <div class="form-group">
+
+                    <label for="amount">
+                        Amount
+                    </label>
+
+                    <div class="amount-input">
+
+                        <span>₦</span>
+
+                        <input
+                            type="number"
+                            id="amount"
+                            placeholder="0.00"
+                            min="0"
+                            step="0.01"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="Food">
+                            🍔 Food
+                        </option>
+
+                        <option value="Transport">
+                            🚌 Transport
+                        </option>
+
+                        <option value="Shopping">
+                            🛍️ Shopping
+                        </option>
+
+                        <option value="Bills">
+                            📄 Bills
+                        </option>
+
+                        <option value="School">
+                            🎓 School
+                        </option>
+
+                        <option value="Business">
+                            💼 Business
+                        </option>
+
+                        <option value="Entertainment">
+                            🎮 Entertainment
+                        </option>
+
+                        <option value="Health">
+                            ❤️ Health
+                        </option>
+
+                        <option value="Family">
+                            👨‍👩‍👧 Family
+                        </option>
+
+                        <option value="Other">
+                            📦 Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATE -->
+                <div class="form-group">
+
+                    <label for="transactionDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="transactionDate"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    <span>＋</span>
+                    Add Transaction
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ================= SETTINGS PAGE ================= -->
+        <section
+            id="settingsPage"
+            class="page">
+
+            <div class="page-title">
+
+                <span class="small-label">
+                    APP SETTINGS
+                </span>
+
+                <h2>Settings</h2>
+
+                <p>
+                    Manage your MoneyMate data.
+                </p>
+
+            </div>
+
+
+            <!-- DATA MANAGEMENT -->
+            <div class="section-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="small-label">
+                            YOUR DATA
+                        </span>
+
+                        <h3>Data Management</h3>
+                    </div>
+
+                    <span class="section-icon">
+                        💾
+                    </span>
+
+                </div>
+
+
+                <div class="settings-list">
+
+                    <button
+                        id="exportBtn"
+                        class="setting-item">
+
+                        <div class="setting-icon">
+                            📤
+                        </div>
+
+                        <div>
+                            <strong>Export Data</strong>
+                            <p>
+                                Save your MoneyMate data as a backup.
+                            </p>
+                        </div>
+
+                        <span>›</span>
+
+                    </button>
+
+
+                    <button
+                        id="importBtn"
+                        class="setting-item">
+
+                        <div class="setting-icon">
+                            📥
+                        </div>
+
+                        <div>
+                            <strong>Import Data</strong>
+                            <p>
+                                Restore a previous MoneyMate backup.
+                            </p>
+                        </div>
+
+                        <span>›</span>
+
+                    </button>
+
+
+                    <button
+                        id="clearDataBtn"
+                        class="setting-item danger-setting">
+
+                        <div class="setting-icon">
+                            🗑️
+                        </div>
+
+                        <div>
+                            <strong>Clear All Data</strong>
+                            <p>
+                                Delete all transactions and goals.
+                            </p>
+                        </div>
+
+                        <span>›</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- APP INFO -->
+            <div class="section-card app-info">
+
+                <div class="app-info-logo">
+                    ₦
+                </div>
+
+                <h3>MoneyMate</h3>
+
+                <p>
+                    Simple personal money management
+                    made for everyday life.
+                </p>
+
+                <span>
+                    Version 3.0
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= BOTTOM NAVIGATION ================= -->
+    <nav class="bottom-nav">
+
+        <button
+            class="nav-item active"
+            data-page="homePage">
+
+            <span class="nav-icon">⌂</span>
+            <span>Home</span>
+
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="transactionsPage">
+
+            <span class="nav-icon">🧾</span>
+            <span>Transactions</span>
+
+        </button>
+
+
+        <button
+            class="nav-item add-nav"
+            data-page="addPage">
+
+            <span class="add-circle">
+                ＋
+            </span>
+
+            <span>Add</span>
+
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="statsPage">
+
+            <span class="nav-icon">📊</span>
+            <span>Stats</span>
+
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="savingsPage">
+
+            <span class="nav-icon">🎯</span>
+            <span>Goals</span>
+
+        </button>
+
+    </nav>
+
+
+
+    <!-- ================= SAVINGS MODAL ================= -->
+    <div
+        id="goalModal"
+        class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="closeGoalModal">
+                ×
+            </button>
+
+            <div class="modal-icon">
+                🎯
+            </div>
+
+            <h2>Set Savings Goal</h2>
+
+            <p>
+                Give your savings a target.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="goalNameInput">
+                    Goal Name
+                </label>
+
+                <input
+                    type="text"
+                    id="goalNameInput"
+                    placeholder="e.g. New phone">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="goalAmountInput">
+                    Target Amount
+                </label>
+
+                <div class="amount-input">
+
+                    <span>₦</span>
+
+                    <input
+                        type="number"
+                        id="goalAmountInput"
+                        placeholder="0.00"
+                        min="0"
+                        step="0.01">
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="saveGoalBtn"
+                class="primary-btn">
+
+                Save Goal
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= CLEAR DATA MODAL ================= -->
+    <div
+        id="confirmModal"
+        class="modal">
+
+        <div class="modal-content confirm-content">
+
+            <div class="modal-icon danger">
+                ⚠️
+            </div>
+
+            <h2>Clear Everything?</h2>
+
+            <p>
+                This will permanently delete all your
+                transactions and savings goal from this device.
+            </p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    id="cancelClear"
+                    class="secondary-btn">
+                    Cancel
+                </button>
+
+                <button
+                    id="confirmClear"
+                    class="danger-btn">
+                    Clear Data
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= IMPORT FILE ================= -->
+    <input
+        type="file"
+        id="importFile"
+        accept=".json"
+        hidden>
+
+
+    <!-- ================= TOAST ================= -->
+    <div
+        id="toast"
+        class="toast">
+
+        <span id="toastIcon">✓</span>
+
+        <span id="toastMessage">
+            Done
+        </span>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
